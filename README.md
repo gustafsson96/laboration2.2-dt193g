@@ -26,6 +26,7 @@ Samtliga endpoints är publika och returnerar JSON.
 
 | Metod     | End Point      | Beskrivning         |
 |------------|----------------|---------------------|
+| GET        | /          | Skriver ut välkomstmeddelande till skärmen  | 
 | GET        | /movies          | Hämtar alla filmer  | 
 | POST       | /movies          | Skapar en ny film  | 
 | PUT        | /movies/:id      | Uppdaterar en film baserat på id | 

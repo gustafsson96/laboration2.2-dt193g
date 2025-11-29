@@ -3,6 +3,12 @@ const pool = require('../db');
 
 // Movie routes for full CRUD functionality
 module.exports = [
+    // Root route
+    {
+        method: 'GET',
+        path: '/',
+        handler: () => 'Welcome to the movies API for laboration 2.2 :-)'
+    },
     // Get all movies
     {
         method: 'GET',
