@@ -1,8 +1,7 @@
 const Joi = require('joi');
-const pool = require('../db');
 
 // Movie routes for full CRUD functionality
-module.exports = [
+module.exports = (pool) => [
     // Root route
     {
         method: 'GET',
