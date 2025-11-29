@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const pool = require('../db');
 
 module.exports = [
@@ -29,6 +30,18 @@ module.exports = [
                 console.error(err);
                 return h.response({ error: 'Failed to add movie' }).code(500);
             }
+        },
+        // Joi POST validation
+        options: {
+            validate: {
+                payload: Joi.object({
+                    title: Joi.string().min(3).max(255).required(),
+                    year: Joi.number().integer().min(1888).max(new Date().getFullYear()).required(),
+                    genre: Joi.string().min(1).max(100).required(),
+                    length: Joi.number().integer().min(1).required(),
+                    watched: Joi.boolean().required()
+                })
+            }
         }
     },
     // Update an existing movie
@@ -38,11 +51,6 @@ module.exports = [
         handler: async (request, h) => {
             const { id } = request.params;
             const { title, year, genre, length, watched } = request.payload;
-
-            // Simple validation
-            if (!title || !year || !genre || !length || watched === undefined) {
-                return h.response({ error: 'Missing required fields' }).code(400);
-            }
 
             try {
                 const result = await pool.query(
@@ -62,6 +70,18 @@ module.exports = [
             } catch (err) {
                 console.error(err);
                 return h.response({ error: 'Failed to update movie' }).code(500);
+            }
+        },
+        // Joi PUT validation
+        options: {
+            validate: {
+                payload: Joi.object({
+                    title: Joi.string().min(3).max(255).required(),
+                    year: Joi.number().integer().min(1888).max(new Date().getFullYear()).required(),
+                    genre: Joi.string().min(1).max(100).required(),
+                    length: Joi.number().integer().min(1).required(),
+                    watched: Joi.boolean().required()
+                })
             }
         }
     },
@@ -87,6 +107,14 @@ module.exports = [
             } catch (err) {
                 console.error(err);
                 return h.response({ error: 'Failed to delete movie' }).code(500);
+            }
+        },
+        // Joi DELETE validation
+        options: {
+            validate: {
+                params: Joi.object({
+                    id: Joi.number().integer().required()
+                })
             }
         }
     }
