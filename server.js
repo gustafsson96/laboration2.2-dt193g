@@ -49,6 +49,30 @@ const init = async () => {
                     return h.response({ error: 'Failed to add movie' }).code(500);
                 }
             }
+        },
+                {
+            method: 'DELETE',
+            path: '/movies/{id}',
+            handler: async (request, h) => {
+                const { id } = request.params;
+
+                try {
+                    const result = await pool.query(
+                        'DELETE FROM movies WHERE id = $1 RETURNING *',
+                        [id]
+                    );
+
+                    if (result.rowCount === 0) {
+                        return h.response({ error: 'Movie not found' }).code(404);
+                    }
+
+                    return h.response(result.rows[0]).code(200);
+
+                } catch (err) {
+                    console.error(err);
+                    return h.response({ error: 'Failed to delete movie' }).code(500);
+                }
+            }
         }
     ]);
 
