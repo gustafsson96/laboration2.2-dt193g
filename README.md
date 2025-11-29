@@ -44,10 +44,11 @@ Ensure node.js is installed and then follow these steps:
 * DB_USER=
 * DB_PASSWORD=
 * DB_NAME=
-5. Skapa tabellen 'movies' i databasen genom något av följande alternativ:
+5. Skapa databasen movies_db i PostgreSQL
+6. Skapa tabellen 'movies' i databasen genom något av följande alternativ:
 * Manuellt via PostgreSQL
 * Automatiskt genom att köra `node install.js`
-6. Starta servern med nodemon via kommandot: npm run dev
+7. Starta servern med nodemon via kommandot: npm run dev
 
 ## Använda teknologier 
 * Node.js
