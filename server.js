@@ -24,6 +24,7 @@ new pool = new Pool({
     port: process.env.DB_PORT || 5432
 });
 
+// Create and initiate a Hapi server
 const init = async () => {
     const server = Hapi.server({
         port: 3000,
@@ -34,8 +35,10 @@ const init = async () => {
     const movieRoutes = require('./routes/movieRoutes');
     server.route(movieRoutes);
 
+    // Start the hapi server
     await server.start();
     console.log('Server running on %s', server.info.uri);
 }
 
+// Run the function to start the server
 init();

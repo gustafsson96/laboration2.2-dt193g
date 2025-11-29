@@ -3,6 +3,7 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
+// Create a PostgreSQL connection pool
 const pool = new Pool({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
@@ -11,6 +12,7 @@ const pool = new Pool({
     port: process.env.DB_PORT || 5432
 });
 
+// Create the "movies" table if it doesn't exist
 (async () => {
     try {
         await pool.query(`
