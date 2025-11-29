@@ -2,16 +2,27 @@
 
 const Hapi = require('@hapi/hapi');
 const { Pool } = require('pg');
+require('dotenv').config();
 
-// require('dotenv').config();
-
+/*
+Local development configuration, commented out for production
 const pool = new Pool({
     user: 'juliagustafsson',
     host: 'localhost',
     database: 'movies_db',
     password: '',
     port: 5432,
-})
+});
+*/
+
+// .env production configuration
+new pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT || 5432
+});
 
 const init = async () => {
     const server = Hapi.server({
