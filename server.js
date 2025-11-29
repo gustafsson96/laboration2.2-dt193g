@@ -21,7 +21,11 @@ new pool = new Pool({
     host: process.env.DB_HOST,
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
-    port: process.env.PORT || 5432
+    port: process.env.PORT,
+    ssl: {
+        rejectUnauthorized: false
+    }
+
 });
 
 // Create and initiate a Hapi server
