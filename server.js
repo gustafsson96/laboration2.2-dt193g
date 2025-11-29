@@ -16,7 +16,7 @@ const pool = new Pool({
 */
 
 // .env production configuration
-new pool = new Pool({
+const pool = new Pool({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
     database: process.env.DB_NAME,
@@ -25,7 +25,6 @@ new pool = new Pool({
     ssl: {
         rejectUnauthorized: false
     }
-
 });
 
 // Create and initiate a Hapi server
