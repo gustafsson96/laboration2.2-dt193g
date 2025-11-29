@@ -16,7 +16,7 @@ const pool = new Pool({
 const init = async () => {
     const server = Hapi.server({
         port: 3000,
-        host: 'localhost'
+        host: '0.0.0.0'
     });
 
     // Connect to Postgres database here
@@ -26,8 +26,8 @@ const init = async () => {
             method: 'GET',
             path: '/',
             handler: async () => {
-                const res = await pool.query('SELECT NOW()');
-                return res.rows[0];
+                const res = await pool.query('SELECT * FROM movies');
+                return res.rows;
             }
         },
         {
