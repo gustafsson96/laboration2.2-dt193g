@@ -35,7 +35,7 @@ const init = async () => {
     });
 
     // Import and register routes
-    const movieRoutes = require('./routes/movieRoutes');
+    const movieRoutes = require('./routes/movieRoutes')(pool);
     server.route(movieRoutes);
 
     // Start the hapi server
