@@ -34,12 +34,12 @@ const init = async () => {
             method: 'POST',
             path: '/movies',
             handler: async (request, h) => {
-                const { title, year, genre, length } = request.payload;
+                const { title, year, genre, length, watched } = request.payload;
 
                 try {
                     const result = await pool.query(
-                        'INSERT INTO movies (title, year, genre, length) VALUES ($1, $2, $3, $4) RETURNING *',
-                        [title, year, genre, length]
+                        'INSERT INTO movies (title, year, genre, length, watched) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+                        [title, year, genre, length, watched]
                     );
 
                     return h.response(result.rows[0]).code(201);
@@ -50,7 +50,40 @@ const init = async () => {
                 }
             }
         },
-                {
+        {
+            method: 'PUT',
+            path: '/movies/{id}',
+            handler: async (request, h) => {
+                const { id } = request.params;
+                const { title, year, genre, length, watched } = request.payload;
+
+                // Simple validation
+                if (!title || !year || !genre || !length || watched === undefined) {
+                    return h.response({ error: 'Missing required fields' }).code(400);
+                }
+
+                try {
+                    const result = await pool.query(
+                        `UPDATE movies
+                        SET title = $1, year = $2, genre = $3, length = $4, watched = $5
+                        WHERE id = $6
+                        RETURNING *`,
+                        [title, year, genre, length, watched, id]
+                    );
+
+                    if (result.rowCount === 0) {
+                        return h.response({ error: 'Movie not found' }).code(404);
+                    }
+
+                    return h.response(result.rows[0]).code(200);
+
+                } catch (err) {
+                    console.error(err);
+                    return h.response({ error: 'Failed to update movie' }).code(500);
+                }
+            }
+        },
+        {
             method: 'DELETE',
             path: '/movies/{id}',
             handler: async (request, h) => {
