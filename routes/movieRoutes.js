@@ -5,7 +5,7 @@ module.exports = [
     // Get all movies
     {
         method: 'GET',
-        path: '/',
+        path: '/movies',
         handler: async () => {
             const res = await pool.query('SELECT * FROM movies');
             return res.rows;
