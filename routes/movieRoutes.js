@@ -100,11 +100,6 @@ module.exports = (pool) => [
                         details: err.details.map(d => d.message)
                     }).code(400).takeover();
                 }
-            },
-            validate: {
-                params: Joi.object({
-                    id: Joi.number().integer().required()
-                }),
             }
         }
     },
