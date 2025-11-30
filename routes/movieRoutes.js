@@ -46,7 +46,13 @@ module.exports = (pool) => [
                     genre: Joi.string().min(1).max(100).required(),
                     length: Joi.number().integer().min(1).required(),
                     watched: Joi.boolean().required()
-                })
+                }),
+                failAction: (request, h, err) => {
+                    return h.response({
+                        error: 'Validation failed',
+                        details: err.details.map(d => d.message)
+                    }).code(400).takeover();
+                }
             }
         }
     },
@@ -87,7 +93,18 @@ module.exports = (pool) => [
                     genre: Joi.string().min(1).max(100).required(),
                     length: Joi.number().integer().min(1).required(),
                     watched: Joi.boolean().required()
-                })
+                }),
+                failAction: (request, h, err) => {
+                    return h.response({
+                        error: 'Validation failed',
+                        details: err.details.map(d => d.message)
+                    }).code(400).takeover();
+                }
+            },
+            validate: {
+                params: Joi.object({
+                    id: Joi.number().integer().required()
+                }),
             }
         }
     },
@@ -120,7 +137,13 @@ module.exports = (pool) => [
             validate: {
                 params: Joi.object({
                     id: Joi.number().integer().required()
-                })
+                }),
+                failAction: (request, h, err) => {
+                    return h.response({
+                        error: 'Validation failed',
+                        details: err.details.map(d => d.message)
+                    }).code(400).takeover();
+                }
             }
         }
     }
