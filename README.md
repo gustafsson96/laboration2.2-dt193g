@@ -4,12 +4,12 @@
 Det här är en REST-webbtjänst som hanterar en filmdatabas. API:et är byggt med ramverket Hapi.js som server och PostgreSQL som databas och har stöd för full CRUD-funktionalitet. Validering sker med biblioteket Joi. 
 <br><br>
 Denna webbtjänst har skapats för laboration 2.2 i kursen "Fullstacksutveckling med ramverk" (DT193G).
-<br>
-Länk till det publicerade API:et: [API]()
+<br><br>
+Länk till det publicerade API:et: [Film-API](https://laboration2-2-dt193g.onrender.com/)
 
 
 ## Funktionalitet
-* **Movie Routes:** Routes som hanterar filmer. 
+* **Movie routes:** Routes som hanterar filmer. 
 * **Full CRUD:** Läs in, skapa, uppdatera och radera filmer från databasen.
 * **Validering med Joi:** Validera input med biblioteket Joi.
 * **PostgreSQL:** En Postgres databas som lagrar filmerna. 
@@ -34,14 +34,14 @@ Samtliga endpoints är publika och returnerar JSON.
 
 ## Installation
 
-Ensure node.js is installed and then follow these steps:
+Säkerställ att node.js är installerat och följ dessa steg:
 
 1. Klona repositoryt: git clone https://github.com/gustafsson96/laboration2.2-dt193g.git
 2. Navigera in till projektmappen via kommandot: `cd ditt-projekts-namn`
 3. Installera nödvändiga dependencies genom att köra kommandot: `npm install`
 4. Skapa en .env-fil och lägg till variabler enligt följande struktur:
 * DB_HOST=
-* PORT=
+* DB_PORT=
 * DB_USER=
 * DB_PASSWORD=
 * DB_NAME=
@@ -49,7 +49,7 @@ Ensure node.js is installed and then follow these steps:
 6. Skapa tabellen 'movies' i databasen genom något av följande alternativ:
 * Manuellt via PostgreSQL
 * Automatiskt genom att köra `node install.js`
-7. Starta servern med nodemon via kommandot: npm run dev
+7. Starta servern med nodemon via kommandot: `npm run dev`
 
 ## Använda teknologier 
 * Node.js
