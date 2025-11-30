@@ -72,7 +72,7 @@ API:ets endpoints kan testas via Postman eller liknande verktyg. För Postman:
 * Skriv in URL: https://laboration2-2-dt193g.onrender.com/movies
 * Sätt header med Content-Type: application/json
 * Välj body (raw JSON)
-* Skapa ett film-objekt: { "title": "str", "year": int, "genre": "str", "length": int, "watched": bool }
+* Skapa ett film-objekt: <br> { "title": "str", "year": int, "genre": "str", "length": int, "watched": bool }
 * Klicka på "Send"
 
 3.  **PUT** - Uppdatera en film 
@@ -81,7 +81,7 @@ API:ets endpoints kan testas via Postman eller liknande verktyg. För Postman:
 * Skriv in URL: https://laboration2-2-dt193g.onrender.com/movies/{id}
 * Sätt header med Content-Type: application/json
 * Välj body (raw JSON)
-* Skapa med ett film-objekt med uppdaterad information { "title": "str", "year": int, "genre": "str", "length": int, "watched": bool }
+* Skapa ett film-objekt med uppdaterad information: <br> { "title": "str", "year": int, "genre": "str", "length": int, "watched": bool }
 * Klicka på "Send"
 
 4. **DELETE** - Radera en film
