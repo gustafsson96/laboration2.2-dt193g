@@ -58,6 +58,38 @@ Säkerställ att node.js är installerat och följ dessa steg:
 * dotenv för att lagra variabler för databasanslutning
 * Joi för validering
 
+## Testning
+API:ets endpoints kan testas via Postman eller liknande verktyg. För Postman: 
+1. **GET** - Hämta alla filmer
+* Öppna Postman och klicka på "New HTTP Request"
+* Välj "GET" i dropdown-menyn
+* Skriv in URL: https://laboration2-2-dt193g.onrender.com/movies 
+* Klicka på "Send"
+
+2. **POST** - Skapa en ny film 
+* Öppna Postman och klicka på "New HTTP Request"
+* Välj "POST" i dropdown-menyn
+* Skriv in URL: https://laboration2-2-dt193g.onrender.com/movies
+* Sätt header med Content-Type: application/json
+* Välj body (raw JSON)
+* Skapa ett film-objekt: { "title": "str", "year": int, "genre": "str", "length": int, "watched": bool }
+* Klicka på "Send"
+
+3.  **PUT** - Uppdatera en film 
+* Öppna Postman och klicka på "New HTTP Request"
+* Välj "PUT" i dropdown-menyn
+* Skriv in URL: https://laboration2-2-dt193g.onrender.com/movies/{id}
+* Sätt header med Content-Type: application/json
+* Välj body (raw JSON)
+* Skapa med ett film-objekt med uppdaterad information { "title": "str", "year": int, "genre": "str", "length": int, "watched": bool }
+* Klicka på "Send"
+
+4. **DELETE** - Radera en film
+* Öppna Postman och klicka på "New HTTP Request"
+* Välj "DELETE" i dropdown-menyn
+* Skriv in URL: https://laboration2-2-dt193g.onrender.com/movies/{id}
+* Klicka på "Send"
+
 <br><br>
 *Skapad av: Julia Gustafsson (jugu2402)*
 <br>
