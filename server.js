@@ -21,7 +21,7 @@ const pool = new Pool({
     host: process.env.DB_HOST,
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
-    port: process.env.PORT,
+    port: process.env.DB_PORT,
     ssl: {
         rejectUnauthorized: false
     }
@@ -30,7 +30,7 @@ const pool = new Pool({
 // Create and initiate a Hapi server
 const init = async () => {
     const server = Hapi.server({
-        port: 3000,
+        port: process.env.PORT || 3000,
         host: '0.0.0.0'
     });
 
